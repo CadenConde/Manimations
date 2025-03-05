@@ -151,7 +151,10 @@ class DoubleScatter(Scene):
 
         # Labels above the dots
         portfolio_label = always_redraw(lambda: Text(f"Portfolio: {portfolio_func(tracker.get_value()):.0f}", color=ORANGE, font_size=24).next_to(portfolio_dot, UP))
-        sp500_label = always_redraw(lambda: Text(f"S&P 500: {sp500_func(tracker.get_value()):.0f}", color=BLUE, font_size=24).next_to(sp500_dot, UP))
+        sp500_label = always_redraw(lambda: Text(f"S&P 500: {sp500_func(tracker.get_value()):.0f}", color=BLUE, font_size=24).next_to(sp500_dot, DOWN))
+        
+        portfolio_label.set_z_index(999)
+        sp500_label.set_z_index(999)
 
         # Add title and legend
         title = Text("Portfolio Value vs. S&P 500 (2019-2022)").scale(0.8).to_edge(UP)
